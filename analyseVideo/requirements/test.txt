@@ -1,0 +1,4 @@
+-r base.txt
+pytest>=3.6.3,<3.7.0
+pytest-mock>=1.10.0,<2.0.0
+freezegun==0.3.10
