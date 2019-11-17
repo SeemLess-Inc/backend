@@ -17,8 +17,8 @@ def list_analysed_files():
             if filename.endswith('.mp4'):
                 json_filename = filename + ".json"
                 try:
+                    s3.head_object(Bucket=BUCKET_NAME, Key=json_filename)
                     timestamp = key['LastModified'].isoformat()
-                    # obj = s3.head_object(Bucket=BUCKET_NAME, Key=json_filename)
                     analytics = API_URL + "/" + json_filename
                 except ClientError as e:
                     #if e.response['Error']['Code'] != '404':
