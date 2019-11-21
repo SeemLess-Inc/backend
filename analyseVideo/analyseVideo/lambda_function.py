@@ -13,6 +13,18 @@ def analyse_video(file_name):
     s3_file_name = urllib.parse.quote_plus(file_name)
     s3_file_path = f'https://{BUCKET_NAME}.s3-eu-west-1.amazonaws.com/{s3_file_name}'
 
+    # Pre-signed S3 file upload cannot set public permissions, so have to do it here
+    response = boto3.resource('s3').ObjectAcl(BUCKET_NAME, s3_file_name).put(ACL='public-read')
+
+    # Create blank default JSON response
+    s3_json_file_name = f'{s3_file_name}.json'
+    s3 = boto3.client('s3')
+    try:
+        s3_response = s3.put_object(Bucket=BUCKET_NAME, Key=s3_json_file_name, Body='{}', ACL='public-read')
+    except Exception as e:
+        raise IOError(e)
+
+    # Call Netra
     headers = { 'Content-Type': 'application/json' }
     request = { 'video_url': s3_file_path, 'callback_url': CALLBACK_URL }
 
