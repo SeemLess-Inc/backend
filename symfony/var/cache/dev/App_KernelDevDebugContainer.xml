@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
   <parameters>
-    <parameter key="kernel.project_dir">/Users/hims/Work/Symfony/seemlessapi</parameter>
+    <parameter key="kernel.project_dir">/Users/hims/Work/symfony/seemlessapi</parameter>
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
-    <parameter key="kernel.cache_dir">/Users/hims/Work/Symfony/seemlessapi/var/cache/dev</parameter>
-    <parameter key="kernel.logs_dir">/Users/hims/Work/Symfony/seemlessapi/var/log</parameter>
+    <parameter key="kernel.cache_dir">/Users/hims/Work/symfony/seemlessapi/var/cache/dev</parameter>
+    <parameter key="kernel.logs_dir">/Users/hims/Work/symfony/seemlessapi/var/log</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
       <parameter key="MonologBundle">Symfony\Bundle\MonologBundle\MonologBundle</parameter>
@@ -16,27 +16,27 @@
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
-        <parameter key="path">/Users/hims/Work/Symfony/seemlessapi/vendor/symfony/framework-bundle</parameter>
+        <parameter key="path">/Users/hims/Work/symfony/seemlessapi/vendor/symfony/framework-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\FrameworkBundle</parameter>
       </parameter>
       <parameter key="MonologBundle" type="collection">
-        <parameter key="path">/Users/hims/Work/Symfony/seemlessapi/vendor/symfony/monolog-bundle</parameter>
+        <parameter key="path">/Users/hims/Work/symfony/seemlessapi/vendor/symfony/monolog-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\MonologBundle</parameter>
       </parameter>
       <parameter key="SensioFrameworkExtraBundle" type="collection">
-        <parameter key="path">/Users/hims/Work/Symfony/seemlessapi/vendor/sensio/framework-extra-bundle/src</parameter>
+        <parameter key="path">/Users/hims/Work/symfony/seemlessapi/vendor/sensio/framework-extra-bundle/src</parameter>
         <parameter key="namespace">Sensio\Bundle\FrameworkExtraBundle</parameter>
       </parameter>
       <parameter key="DoctrineBundle" type="collection">
-        <parameter key="path">/Users/hims/Work/Symfony/seemlessapi/vendor/doctrine/doctrine-bundle</parameter>
+        <parameter key="path">/Users/hims/Work/symfony/seemlessapi/vendor/doctrine/doctrine-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\DoctrineBundle</parameter>
       </parameter>
       <parameter key="DoctrineMigrationsBundle" type="collection">
-        <parameter key="path">/Users/hims/Work/Symfony/seemlessapi/vendor/doctrine/doctrine-migrations-bundle</parameter>
+        <parameter key="path">/Users/hims/Work/symfony/seemlessapi/vendor/doctrine/doctrine-migrations-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\MigrationsBundle</parameter>
       </parameter>
       <parameter key="MakerBundle" type="collection">
-        <parameter key="path">/Users/hims/Work/Symfony/seemlessapi/vendor/symfony/maker-bundle/src</parameter>
+        <parameter key="path">/Users/hims/Work/symfony/seemlessapi/vendor/symfony/maker-bundle/src</parameter>
         <parameter key="namespace">Symfony\Bundle\MakerBundle</parameter>
       </parameter>
     </parameter>
@@ -52,8 +52,10 @@
         <parameter key="secret">%env(AWS_SECRET)%</parameter>
       </parameter>
     </parameter>
-    <parameter key="video_directory">../public/ffmpeg/video</parameter>
-    <parameter key="image_directory">../public/ffmpeg/image</parameter>
+    <parameter key="local_video_directory">../public/ffmpeg/video</parameter>
+    <parameter key="local_image_directory">../public/ffmpeg/image</parameter>
+    <parameter key="remote_video_directory">adpods</parameter>
+    <parameter key="remote_image_directory">thumbnails</parameter>
     <parameter key="fragment.renderer.hinclude.global_template"></parameter>
     <parameter key="fragment.path">/_fragment</parameter>
     <parameter key="kernel.secret">%env(APP_SECRET)%</parameter>
@@ -70,18 +72,18 @@
       <parameter key="cookie_samesite">lax</parameter>
       <parameter key="gc_probability">1</parameter>
     </parameter>
-    <parameter key="session.save_path">/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/sessions</parameter>
+    <parameter key="session.save_path">/Users/hims/Work/symfony/seemlessapi/var/cache/dev/sessions</parameter>
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="data_collector.templates" type="collection"/>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
-    <parameter key="debug.container.dump">/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/App_KernelDevDebugContainer.xml</parameter>
+    <parameter key="debug.container.dump">/Users/hims/Work/symfony/seemlessapi/var/cache/dev/App_KernelDevDebugContainer.xml</parameter>
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
     <parameter key="router.resource">kernel::loadRoutes</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
-    <parameter key="serializer.mapping.cache.file">/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/serialization.php</parameter>
+    <parameter key="serializer.mapping.cache.file">/Users/hims/Work/symfony/seemlessapi/var/cache/dev/serialization.php</parameter>
     <parameter key="serializer.mapping.cache.prefix"></parameter>
     <parameter key="monolog.use_microseconds">true</parameter>
     <parameter key="monolog.swift_mailer.handlers" type="collection"/>
@@ -118,9 +120,6 @@
     <parameter key="doctrine.dbal.connection_factory.types" type="collection">
       <parameter key="uuid_binary_ordered_time" type="collection">
         <parameter key="class">Ramsey\Uuid\Doctrine\UuidBinaryOrderedTimeType</parameter>
-      </parameter>
-      <parameter key="uuid" type="collection">
-        <parameter key="class">Ramsey\Uuid\Doctrine\UuidType</parameter>
       </parameter>
     </parameter>
     <parameter key="doctrine.connections" type="collection">
@@ -173,9 +172,9 @@
     <parameter key="doctrine.orm.second_level_cache.cache_configuration.class">Doctrine\ORM\Cache\CacheConfiguration</parameter>
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">/Users/hims/Work/symfony/seemlessapi/var/cache/dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
-    <parameter key="doctrine_migrations.dir_name">/Users/hims/Work/Symfony/seemlessapi/src/Migrations</parameter>
+    <parameter key="doctrine_migrations.dir_name">/Users/hims/Work/symfony/seemlessapi/src/Migrations</parameter>
     <parameter key="doctrine_migrations.namespace">DoctrineMigrations</parameter>
     <parameter key="doctrine_migrations.table_name">migration_versions</parameter>
     <parameter key="doctrine_migrations.column_name">version</parameter>
@@ -192,6 +191,13 @@
     <service id="kernel" class="App\Kernel" public="true" synthetic="true">
       <tag name="routing.route_loader"/>
     </service>
+    <service id="App\Controller\AdPodsController" class="App\Controller\AdPodsController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.pNNo5z3.App\Controller\AdPodsController"/>
+      </call>
+    </service>
     <service id="App\Controller\Api\MediaController" class="App\Controller\Api\MediaController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -206,12 +212,17 @@
         <argument type="service" id=".service_locator.pNNo5z3.App\Controller\VideosController"/>
       </call>
     </service>
+    <service id="App\Repository\AdPodsRepository" class="App\Repository\AdPodsRepository" public="false" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\VideosRepository" class="App\Repository\VideosRepository" public="false" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Utils\Aws\AwsS3Util" class="App\Utils\Aws\AwsS3Util" public="false" autowire="true" autoconfigure="true"/>
     <service id="App\Utils\FFMpeg\FFMpegUtil" class="App\Utils\FFMpeg\FFMpegUtil" public="false" autowire="true" autoconfigure="true"/>
+    <service id="App\Utils\Helper" class="App\Utils\Helper" public="false" autowire="true" autoconfigure="true"/>
     <service id="Aws\Sdk" class="Aws\Sdk" public="false" autowire="true" autoconfigure="true">
       <argument>%aws_sdk%</argument>
     </service>
@@ -273,7 +284,7 @@
     <service id="cache_warmer" class="Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate" public="true">
       <argument type="tagged_iterator" tag="kernel.cache_warmer"/>
       <argument>true</argument>
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/App_KernelDevDebugContainerDeprecations.log</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/App_KernelDevDebugContainerDeprecations.log</argument>
     </service>
     <service id="cache_clearer" class="Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer" public="true">
       <argument type="tagged_iterator" tag="kernel.cache_clearer"/>
@@ -368,21 +379,21 @@
         <argument>/_fragment</argument>
       </call>
     </service>
-    <service id=".2_~P.I0Rpc" public="false">
+    <service id=".2_~8ZsxJhu" public="false">
       <argument type="service" id="request_stack"/>
       <factory class="Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer" method="getAndCleanOutputBuffer"/>
     </service>
-    <service id=".1_~P.I0Rpc" public="false">
+    <service id=".1_~8ZsxJhu" public="false">
       <argument type="service" id="request_stack"/>
       <argument>true</argument>
       <factory class="Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer" method="isDebug"/>
     </service>
     <service id="error_handler.error_renderer.html" class="Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer">
-      <argument type="service" id=".1_~P.I0Rpc"/>
+      <argument type="service" id=".1_~8ZsxJhu"/>
       <argument>UTF-8</argument>
       <argument type="service" id="debug.file_link_formatter" on-invalid="null"/>
-      <argument>/Users/hims/Work/Symfony/seemlessapi</argument>
-      <argument type="service" id=".2_~P.I0Rpc"/>
+      <argument>/Users/hims/Work/symfony/seemlessapi</argument>
+      <argument type="service" id=".2_~8ZsxJhu"/>
       <argument type="service" id="monolog.logger" on-invalid="null"/>
     </service>
     <service id="console.error_listener" class="Symfony\Component\Console\EventListener\ErrorListener" public="false">
@@ -402,7 +413,7 @@
     <service id="console.command.assets_install" class="Symfony\Bundle\FrameworkBundle\Command\AssetsInstallCommand" public="false">
       <tag name="console.command" command="assets:install"/>
       <argument type="service" id="filesystem"/>
-      <argument>/Users/hims/Work/Symfony/seemlessapi</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi</argument>
       <call method="setName">
         <argument>assets:install</argument>
       </call>
@@ -571,9 +582,9 @@
     <service id="cache.app" class="Symfony\Component\Cache\Adapter\FilesystemAdapter" public="true">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
-      <argument>oWkDfVuO1p</argument>
+      <argument>IqUvmR1O1p</argument>
       <argument>0</argument>
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/pools</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/pools</argument>
       <argument type="service" id="cache.default_marshaller" on-invalid="ignore"/>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
@@ -585,50 +596,50 @@
     <service id="cache.system" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="true">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
-      <argument>Bj3GIjsS9X</argument>
+      <argument>4dfJ6cT6H9</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/pools</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.validator" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
-      <argument>UDF2SedkV0</argument>
+      <argument>c-2hahTa49</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/pools</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.serializer" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
-      <argument>-bGith9n8H</argument>
+      <argument>Ovr4SQrfLc</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/pools</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.annotations" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
-      <argument>UmB8Oxxh9i</argument>
+      <argument>KxhjDT9OyQ</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/pools</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.property_info" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
       <tag name="cache.pool"/>
       <tag name="kernel.reset" method="reset"/>
-      <argument>mT2udarF4j</argument>
+      <argument>sUkAAh9XwI</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/pools</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -638,7 +649,7 @@
       <argument></argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/pools</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -667,7 +678,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/pools</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/pools</argument>
       <argument type="service" id="cache.default_marshaller" on-invalid="ignore"/>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
@@ -773,8 +784,8 @@
       <argument>0</argument>
       <argument>false</argument>
     </service>
-    <service id=".1_NativeFileSessionHandler~VF1pY71" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler" public="false">
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/sessions</argument>
+    <service id=".1_NativeFileSessionHandler~zlpSPhu" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler" public="false">
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/sessions</argument>
     </service>
     <service id="session" class="Symfony\Component\HttpFoundation\Session\Session" public="true">
       <argument type="service" id="session.storage.native"/>
@@ -797,12 +808,12 @@
     <service id="session.flash_bag" class="Symfony\Component\HttpFoundation\Session\Flash\FlashBag" public="false"/>
     <service id="session.attribute_bag" class="Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag" public="false"/>
     <service id="session.storage.mock_file" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage" public="false">
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/sessions</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
     <service id="session.handler.native_file" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandler" public="false">
-      <argument type="service" id=".1_NativeFileSessionHandler~VF1pY71"/>
+      <argument type="service" id=".1_NativeFileSessionHandler~zlpSPhu"/>
     </service>
     <service id="session.abstract_handler" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler" public="false">
       <argument></argument>
@@ -972,14 +983,6 @@
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
-        <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
@@ -1160,7 +1163,7 @@
       <argument type="service" id=".service_locator.jcZzgjJ.router.default"/>
       <argument>kernel::loadRoutes</argument>
       <argument type="collection">
-        <argument key="cache_dir">/Users/hims/Work/Symfony/seemlessapi/var/cache/dev</argument>
+        <argument key="cache_dir">/Users/hims/Work/symfony/seemlessapi/var/cache/dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\CompiledUrlGenerator</argument>
         <argument key="generator_dumper_class">Symfony\Component\Routing\Generator\Dumper\CompiledUrlGeneratorDumper</argument>
@@ -1199,7 +1202,7 @@
       <argument type="service" id="request_stack"/>
       <argument type="service" id="router.request_context" on-invalid="ignore"/>
       <argument type="service" id="monolog.logger.request" on-invalid="ignore"/>
-      <argument>/Users/hims/Work/Symfony/seemlessapi</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi</argument>
       <argument>true</argument>
     </service>
     <service id="Symfony\Bundle\FrameworkBundle\Controller\RedirectController" class="Symfony\Bundle\FrameworkBundle\Controller\RedirectController" public="true">
@@ -1224,12 +1227,12 @@
       <argument type="service" id="file_locator"/>
       <argument type="service" id="routing.loader.annotation"/>
     </service>
-    <service id=".2_PhpArrayAdapter~vMVOdlC" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/annotations.php</argument>
+    <service id=".2_PhpArrayAdapter~5GcVQuj" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/annotations.php</argument>
       <argument type="service" id="cache.annotations"/>
       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
     </service>
-    <service id=".1_ArrayCache~vMVOdlC" class="Doctrine\Common\Cache\ArrayCache" public="false"/>
+    <service id=".1_ArrayCache~5GcVQuj" class="Doctrine\Common\Cache\ArrayCache" public="false"/>
     <service id="annotations.reader" class="Doctrine\Common\Annotations\AnnotationReader" public="false">
       <call method="addGlobalIgnoredName">
         <argument>required</argument>
@@ -1244,7 +1247,7 @@
     <service id="annotations.cached_reader" class="Doctrine\Common\Annotations\CachedReader" public="false">
       <tag name="annotations.cached_reader"/>
       <argument type="service" id="annotations.reader"/>
-      <argument type="service" id=".1_ArrayCache~vMVOdlC"/>
+      <argument type="service" id=".1_ArrayCache~5GcVQuj"/>
       <argument>true</argument>
       <property name="cacheProviderBackup" type="service" id="annotations.cache"/>
     </service>
@@ -1254,12 +1257,12 @@
     <service id="annotations.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\AnnotationsCacheWarmer" public="false">
       <tag name="kernel.cache_warmer"/>
       <argument type="service" id="annotations.reader"/>
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/annotations.php</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/annotations.php</argument>
       <argument>#^Symfony\\(?:Component\\HttpKernel\\|Bundle\\FrameworkBundle\\Controller\\(?!.*Controller$))#</argument>
       <argument>true</argument>
     </service>
     <service id="annotations.cache" class="Symfony\Component\Cache\DoctrineProvider" public="false">
-      <argument type="service" id=".2_PhpArrayAdapter~vMVOdlC"/>
+      <argument type="service" id=".2_PhpArrayAdapter~5GcVQuj"/>
     </service>
     <service id="property_accessor" class="Symfony\Component\PropertyAccess\PropertyAccessor" public="false">
       <argument>false</argument>
@@ -1269,18 +1272,18 @@
     </service>
     <service id="secrets.vault" class="Symfony\Bundle\FrameworkBundle\Secrets\SodiumVault">
       <tag name="container.env_var_loader"/>
-      <argument>/Users/hims/Work/Symfony/seemlessapi/config/secrets/dev</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/config/secrets/dev</argument>
       <argument>%env(base64:default::SYMFONY_DECRYPTION_SECRET)%</argument>
     </service>
     <service id="secrets.local_vault" class="Symfony\Bundle\FrameworkBundle\Secrets\DotenvVault">
-      <argument>/Users/hims/Work/Symfony/seemlessapi/.env.dev.local</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/.env.dev.local</argument>
     </service>
-    <service id=".2_~86lDZeZ" public="false">
+    <service id=".2_~c6PrgZ6" public="false">
       <argument type="service" id="request_stack"/>
       <argument>true</argument>
       <factory class="Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer" method="isDebug"/>
     </service>
-    <service id=".1_~86lDZeZ" public="false">
+    <service id=".1_~c6PrgZ6" public="false">
       <argument type="service" id="request_stack"/>
       <factory class="Symfony\Component\ErrorHandler\ErrorRenderer\SerializerErrorRenderer" method="getPreferredFormat"/>
     </service>
@@ -1366,10 +1369,10 @@
           </service>
         </argument>
       </argument>
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/serialization.php</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/serialization.php</argument>
     </service>
     <service id="serializer.mapping.cache.symfony" class="Psr\Cache\CacheItemPoolInterface" public="false">
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/serialization.php</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/serialization.php</argument>
       <argument type="service" id="cache.serializer"/>
       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
     </service>
@@ -1395,9 +1398,9 @@
     </service>
     <service id="error_handler.error_renderer.serializer" class="Symfony\Component\ErrorHandler\ErrorRenderer\SerializerErrorRenderer" public="false">
       <argument type="service" id="serializer"/>
-      <argument type="service" id=".1_~86lDZeZ"/>
+      <argument type="service" id=".1_~c6PrgZ6"/>
       <argument type="service" id="error_handler.error_renderer.html"/>
-      <argument type="service" id=".2_~86lDZeZ"/>
+      <argument type="service" id=".2_~c6PrgZ6"/>
     </service>
     <service id="property_info" class="Symfony\Component\PropertyInfo\PropertyInfoExtractor" public="false">
       <argument type="iterator">
@@ -1468,7 +1471,7 @@
     <service id="monolog.processor.psr_log_message" class="Monolog\Processor\PsrLogMessageProcessor" public="false"/>
     <service id="monolog.handler.main" class="Monolog\Handler\StreamHandler">
       <tag name="kernel.reset" method="reset"/>
-      <argument>/Users/hims/Work/Symfony/seemlessapi/var/log/dev.log</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi/var/log/dev.log</argument>
       <argument>100</argument>
       <argument>true</argument>
       <argument>null</argument>
@@ -1645,7 +1648,7 @@
       </argument>
       <factory service="doctrine.dbal.connection_factory" method="createConnection"/>
     </service>
-    <service id=".1_ServiceLocator~7ZBdDWr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".1_ServiceLocator~21mRHmV" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <argument type="collection"/>
     </service>
     <service id="doctrine.orm.proxy_cache_warmer" class="Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer" public="false">
@@ -1665,7 +1668,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.yk.Cn1n"/>
+      <argument type="service" id=".service_locator.BiLAHCv"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -1802,7 +1805,7 @@
         <argument type="service" id="doctrine.orm.default_metadata_driver"/>
       </call>
       <call method="setProxyDir">
-        <argument>/Users/hims/Work/Symfony/seemlessapi/var/cache/dev/doctrine/orm/Proxies</argument>
+        <argument>/Users/hims/Work/symfony/seemlessapi/var/cache/dev/doctrine/orm/Proxies</argument>
       </call>
       <call method="setProxyNamespace">
         <argument>Proxies</argument>
@@ -1832,7 +1835,7 @@
     <service id="doctrine.orm.default_annotation_metadata_driver" class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
       <argument type="service" id="annotations.cached_reader"/>
       <argument type="collection">
-        <argument>/Users/hims/Work/Symfony/seemlessapi/src/Entity</argument>
+        <argument>/Users/hims/Work/symfony/seemlessapi/src/Entity</argument>
       </argument>
     </service>
     <service id="doctrine.orm.default_metadata_driver" class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false">
@@ -1948,7 +1951,7 @@
     <service id="maker.file_manager" class="Symfony\Bundle\MakerBundle\FileManager" public="false">
       <argument type="service" id="filesystem"/>
       <argument type="service" id="maker.autoloader_util"/>
-      <argument>/Users/hims/Work/Symfony/seemlessapi</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi</argument>
       <argument>null</argument>
     </service>
     <service id="maker.autoloader_finder" class="Symfony\Bundle\MakerBundle\Util\ComposerAutoloaderFinder" public="false">
@@ -2007,7 +2010,7 @@
       <tag name="maker.command"/>
       <argument type="service" id="maker.file_manager"/>
       <argument type="service" id="maker.doctrine_helper"/>
-      <argument>/Users/hims/Work/Symfony/seemlessapi</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi</argument>
       <argument type="service" id="maker.generator"/>
     </service>
     <service id="maker.maker.make_fixtures" class="Symfony\Bundle\MakerBundle\Maker\MakeFixtures" public="false">
@@ -2057,14 +2060,19 @@
     </service>
     <service id="maker.maker.make_migration" class="Symfony\Bundle\MakerBundle\Maker\MakeMigration" public="false">
       <tag name="maker.command"/>
-      <argument>/Users/hims/Work/Symfony/seemlessapi</argument>
+      <argument>/Users/hims/Work/symfony/seemlessapi</argument>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdPodsController" class="App\Controller\AdPodsController" public="false" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdPodsController" class="App\Controller\AdPodsController" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AdPodsController" class="App\Controller\AdPodsController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Api\MediaController" class="App\Controller\Api\MediaController" public="false" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Api\MediaController" class="App\Controller\Api\MediaController" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Api\MediaController" class="App\Controller\Api\MediaController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\VideosController" class="App\Controller\VideosController" public="false" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\VideosController" class="App\Controller\VideosController" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\VideosController" class="App\Controller\VideosController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AdPodsRepository" class="App\Repository\AdPodsRepository" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\AdPodsRepository" class="App\Repository\AdPodsRepository" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\VideosRepository" class="App\Repository\VideosRepository" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\VideosRepository" class="App\Repository\VideosRepository" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.CmORmuK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -2356,9 +2364,10 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.yk.Cn1n" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.BiLAHCv" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\AdPodsRepository" type="service" id="App\Repository\AdPodsRepository"/>
         <argument key="App\Repository\VideosRepository" type="service" id="App\Repository\VideosRepository"/>
       </argument>
     </service>
@@ -2373,6 +2382,12 @@
         <argument key="serializer" type="service" id="serializer" on-invalid="ignore"/>
         <argument key="session" type="service" id="session" on-invalid="ignore"/>
       </argument>
+    </service>
+    <service id=".service_locator.pNNo5z3.App\Controller\AdPodsController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\AdPodsController"/>
+      <argument>App\Controller\AdPodsController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.pNNo5z3" method="withContext"/>
     </service>
     <service id=".service_locator.pNNo5z3.App\Controller\Api\MediaController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\Api\MediaController"/>

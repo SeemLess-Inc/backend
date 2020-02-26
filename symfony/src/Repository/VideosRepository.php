@@ -4,7 +4,9 @@ namespace App\Repository;
 
 use App\Entity\Videos;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @method Videos|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +19,26 @@ class VideosRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Videos::class);
+    }
+
+    /**
+     * Returns Video object.
+     * @Column(type="uuid_binary") $id
+     * @return Videos[]
+     */
+    public function findByVideoId($id)
+    {
+        //$binaryId = base64_decode($id);
+        $uuidObj = Uuid::fromString($id);
+        print_r($uuidObj->toString());
+            return $this->createQueryBuilder('v')
+           // ->andWhere('v.id = :val')
+           //     ->setParameter('val', $uuidObj->getBytes())
+            ->orderBy('v.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+             //   ->getArrayResult();
+            ->getResult();
     }
 
     // /**

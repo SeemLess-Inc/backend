@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerKcrjJSx;
+namespace ContainerIYWxTPB;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -38,6 +38,7 @@ class App_KernelDevDebugContainer extends Container
             'kernel' => true,
         ];
         $this->methodMap = [
+            'App\\Controller\\AdPodsController' => 'getAdPodsControllerService',
             'App\\Controller\\Api\\MediaController' => 'getMediaControllerService',
             'App\\Controller\\VideosController' => 'getVideosControllerService',
             'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController' => 'getRedirectControllerService',
@@ -178,6 +179,23 @@ class App_KernelDevDebugContainer extends Container
     public function getRemovedIds(): array
     {
         return require $this->containerDir.\DIRECTORY_SEPARATOR.'removed-ids.php';
+    }
+
+    /**
+     * Gets the public 'App\Controller\AdPodsController' shared autowired service.
+     *
+     * @return \App\Controller\AdPodsController
+     */
+    protected function getAdPodsControllerService()
+    {
+        include_once \dirname(__DIR__, 4).'/vendor/symfony/framework-bundle/Controller/AbstractController.php';
+        include_once \dirname(__DIR__, 4).'/src/Controller/AdPodsController.php';
+
+        $this->services['App\\Controller\\AdPodsController'] = $instance = new \App\Controller\AdPodsController();
+
+        $instance->setContainer(($this->privates['.service_locator.pNNo5z3'] ?? $this->get_ServiceLocator_PNNo5z3Service())->withContext('App\\Controller\\AdPodsController', $this));
+
+        return $instance;
     }
 
     /**
@@ -680,8 +698,10 @@ class App_KernelDevDebugContainer extends Container
         $a->setQuoteStrategy(new \Doctrine\ORM\Mapping\DefaultQuoteStrategy());
         $a->setEntityListenerResolver(new \Doctrine\Bundle\DoctrineBundle\Mapping\ContainerEntityListenerResolver($this));
         $a->setRepositoryFactory(new \Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory(new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [
+            'App\\Repository\\AdPodsRepository' => ['privates', 'App\\Repository\\AdPodsRepository', 'getAdPodsRepositoryService', false],
             'App\\Repository\\VideosRepository' => ['privates', 'App\\Repository\\VideosRepository', 'getVideosRepositoryService', false],
         ], [
+            'App\\Repository\\AdPodsRepository' => '?',
             'App\\Repository\\VideosRepository' => '?',
         ])));
 
@@ -1105,6 +1125,23 @@ class App_KernelDevDebugContainer extends Container
             'serializer' => '?',
             'session' => '?',
         ]);
+    }
+
+    /**
+     * Gets the private 'App\Repository\AdPodsRepository' shared autowired service.
+     *
+     * @return \App\Repository\AdPodsRepository
+     */
+    protected function getAdPodsRepositoryService()
+    {
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/persistence/lib/Doctrine/Persistence/ObjectRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/orm/lib/Doctrine/ORM/EntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepositoryInterface.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/src/Repository/AdPodsRepository.php';
+
+        return $this->privates['App\\Repository\\AdPodsRepository'] = new \App\Repository\AdPodsRepository(($this->services['doctrine'] ?? $this->getDoctrineService()));
     }
 
     /**
@@ -3166,8 +3203,10 @@ class App_KernelDevDebugContainer extends Container
             'kernel.container_class' => 'App_KernelDevDebugContainer',
             'container.dumper.inline_class_loader' => true,
             'container.dumper.inline_factories' => true,
-            'video_directory' => '../public/ffmpeg/video',
-            'image_directory' => '../public/ffmpeg/image',
+            'local_video_directory' => '../public/ffmpeg/video',
+            'local_image_directory' => '../public/ffmpeg/image',
+            'remote_video_directory' => 'adpods',
+            'remote_image_directory' => 'thumbnails',
             'fragment.renderer.hinclude.global_template' => '',
             'fragment.path' => '/_fragment',
             'kernel.http_method_override' => true,
@@ -3234,9 +3273,6 @@ class App_KernelDevDebugContainer extends Container
             'doctrine.dbal.connection_factory.types' => [
                 'uuid_binary_ordered_time' => [
                     'class' => 'Ramsey\\Uuid\\Doctrine\\UuidBinaryOrderedTimeType',
-                ],
-                'uuid' => [
-                    'class' => 'Ramsey\\Uuid\\Doctrine\\UuidType',
                 ],
             ],
             'doctrine.connections' => [

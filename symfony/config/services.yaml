@@ -13,9 +13,11 @@ parameters:
             key: '%env(AWS_KEY)%'
             secret: '%env(AWS_SECRET)%'
 
-##Local file video directory
-    video_directory: '../public/ffmpeg/video'
-    image_directory: '../public/ffmpeg/image'
+##Local/Remote video/thumbnail directory
+    local_video_directory: '../public/ffmpeg/video'
+    local_image_directory: '../public/ffmpeg/image'
+    remote_video_directory: 'adpods'
+    remote_image_directory: 'thumbnails'
 
 
 

@@ -9,8 +9,8 @@ return [
     false, // $matchHost
     [ // $staticRoutes
         '/Api/CreateVideoEntry' => [[['_route' => 'app_api_media_createvideoentry', '_controller' => 'App\\Controller\\Api\\MediaController::createVideoEntry'], null, ['POST' => 0], null, false, false, null]],
-        '/Api/CreateFrame' => [[['_route' => 'app_api_media_createframe', '_controller' => 'App\\Controller\\Api\\MediaController::CreateFrame'], null, ['POST' => 0], null, false, false, null]],
-        '/Api/MediaConvert' => [[['_route' => 'app_api_media_convert', '_controller' => 'App\\Controller\\Api\\MediaController::Convert'], null, ['POST' => 0], null, false, false, null]],
+        '/Api/MultipartUpload' => [[['_route' => 'app_api_media_multipartupload', '_controller' => 'App\\Controller\\Api\\MediaController::multipartUpload'], null, null, null, false, false, null]],
+        '/Api/CreateClip' => [[['_route' => 'app_api_media_processnewclip', '_controller' => 'App\\Controller\\Api\\MediaController::processNewClip'], null, ['POST' => 0], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

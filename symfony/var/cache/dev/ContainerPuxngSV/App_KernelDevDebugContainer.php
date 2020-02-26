@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerRa8t9GO;
+namespace ContainerPuxngSV;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -38,6 +38,7 @@ class App_KernelDevDebugContainer extends Container
             'kernel' => true,
         ];
         $this->methodMap = [
+            'App\\Controller\\AdPodsController' => 'getAdPodsControllerService',
             'App\\Controller\\Api\\MediaController' => 'getMediaControllerService',
             'App\\Controller\\VideosController' => 'getVideosControllerService',
             'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController' => 'getRedirectControllerService',
@@ -181,6 +182,23 @@ class App_KernelDevDebugContainer extends Container
     }
 
     /**
+     * Gets the public 'App\Controller\AdPodsController' shared autowired service.
+     *
+     * @return \App\Controller\AdPodsController
+     */
+    protected function getAdPodsControllerService()
+    {
+        include_once \dirname(__DIR__, 4).'/vendor/symfony/framework-bundle/Controller/AbstractController.php';
+        include_once \dirname(__DIR__, 4).'/src/Controller/AdPodsController.php';
+
+        $this->services['App\\Controller\\AdPodsController'] = $instance = new \App\Controller\AdPodsController();
+
+        $instance->setContainer(($this->privates['.service_locator.pNNo5z3'] ?? $this->get_ServiceLocator_PNNo5z3Service())->withContext('App\\Controller\\AdPodsController', $this));
+
+        return $instance;
+    }
+
+    /**
      * Gets the public 'App\Controller\Api\MediaController' shared autowired service.
      *
      * @return \App\Controller\Api\MediaController
@@ -204,14 +222,9 @@ class App_KernelDevDebugContainer extends Container
      */
     protected function getVideosControllerService()
     {
-        include_once \dirname(__DIR__, 4).'/vendor/symfony/framework-bundle/Controller/AbstractController.php';
         include_once \dirname(__DIR__, 4).'/src/Controller/VideosController.php';
 
-        $this->services['App\\Controller\\VideosController'] = $instance = new \App\Controller\VideosController();
-
-        $instance->setContainer(($this->privates['.service_locator.pNNo5z3'] ?? $this->get_ServiceLocator_PNNo5z3Service())->withContext('App\\Controller\\VideosController', $this));
-
-        return $instance;
+        return $this->services['App\\Controller\\VideosController'] = new \App\Controller\VideosController();
     }
 
     /**
@@ -262,7 +275,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'/vendor/symfony/cache/Marshaller/MarshallerInterface.php';
         include_once \dirname(__DIR__, 4).'/vendor/symfony/cache/Marshaller/DefaultMarshaller.php';
 
-        $this->services['cache.app'] = $instance = new \Symfony\Component\Cache\Adapter\FilesystemAdapter('oWkDfVuO1p', 0, ($this->targetDir.''.'/pools'), new \Symfony\Component\Cache\Marshaller\DefaultMarshaller(NULL));
+        $this->services['cache.app'] = $instance = new \Symfony\Component\Cache\Adapter\FilesystemAdapter('IqUvmR1O1p', 0, ($this->targetDir.''.'/pools'), new \Symfony\Component\Cache\Marshaller\DefaultMarshaller(NULL));
 
         $instance->setLogger(($this->privates['monolog.logger.cache'] ?? $this->getMonolog_Logger_CacheService()));
 
@@ -320,7 +333,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'/vendor/symfony/cache/Traits/ContractsTrait.php';
         include_once \dirname(__DIR__, 4).'/vendor/symfony/cache/Adapter/AbstractAdapter.php';
 
-        return $this->services['cache.system'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('Bj3GIjsS9X', 0, $this->getParameter('container.build_id'), ($this->targetDir.''.'/pools'), ($this->privates['monolog.logger.cache'] ?? $this->getMonolog_Logger_CacheService()));
+        return $this->services['cache.system'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('4dfJ6cT6H9', 0, $this->getParameter('container.build_id'), ($this->targetDir.''.'/pools'), ($this->privates['monolog.logger.cache'] ?? $this->getMonolog_Logger_CacheService()));
     }
 
     /**
@@ -680,8 +693,10 @@ class App_KernelDevDebugContainer extends Container
         $a->setQuoteStrategy(new \Doctrine\ORM\Mapping\DefaultQuoteStrategy());
         $a->setEntityListenerResolver(new \Doctrine\Bundle\DoctrineBundle\Mapping\ContainerEntityListenerResolver($this));
         $a->setRepositoryFactory(new \Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory(new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [
+            'App\\Repository\\AdPodsRepository' => ['privates', 'App\\Repository\\AdPodsRepository', 'getAdPodsRepositoryService', false],
             'App\\Repository\\VideosRepository' => ['privates', 'App\\Repository\\VideosRepository', 'getVideosRepositoryService', false],
         ], [
+            'App\\Repository\\AdPodsRepository' => '?',
             'App\\Repository\\VideosRepository' => '?',
         ])));
 
@@ -774,9 +789,6 @@ class App_KernelDevDebugContainer extends Container
             return ($this->privates['session_listener'] ?? $this->getSessionListenerService());
         }, 1 => 'onFinishRequest'], 0);
         $instance->addListener('kernel.request', [0 => function () {
-            return ($this->privates['debug.debug_handlers_listener'] ?? $this->getDebug_DebugHandlersListenerService());
-        }, 1 => 'configure'], 2048);
-        $instance->addListener('console.command', [0 => function () {
             return ($this->privates['debug.debug_handlers_listener'] ?? $this->getDebug_DebugHandlersListenerService());
         }, 1 => 'configure'], 2048);
         $instance->addListener('kernel.request', [0 => function () {
@@ -1111,6 +1123,23 @@ class App_KernelDevDebugContainer extends Container
     }
 
     /**
+     * Gets the private 'App\Repository\AdPodsRepository' shared autowired service.
+     *
+     * @return \App\Repository\AdPodsRepository
+     */
+    protected function getAdPodsRepositoryService()
+    {
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/persistence/lib/Doctrine/Persistence/ObjectRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/orm/lib/Doctrine/ORM/EntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepositoryInterface.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/src/Repository/AdPodsRepository.php';
+
+        return $this->privates['App\\Repository\\AdPodsRepository'] = new \App\Repository\AdPodsRepository(($this->services['doctrine'] ?? $this->getDoctrineService()));
+    }
+
+    /**
      * Gets the private 'App\Repository\VideosRepository' shared autowired service.
      *
      * @return \App\Repository\VideosRepository
@@ -1215,7 +1244,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'/vendor/symfony/cache/Traits/ContractsTrait.php';
         include_once \dirname(__DIR__, 4).'/vendor/symfony/cache/Adapter/AbstractAdapter.php';
 
-        return $this->privates['cache.annotations'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('UmB8Oxxh9i', 0, $this->getParameter('container.build_id'), ($this->targetDir.''.'/pools'), ($this->privates['monolog.logger.cache'] ?? $this->getMonolog_Logger_CacheService()));
+        return $this->privates['cache.annotations'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('KxhjDT9OyQ', 0, $this->getParameter('container.build_id'), ($this->targetDir.''.'/pools'), ($this->privates['monolog.logger.cache'] ?? $this->getMonolog_Logger_CacheService()));
     }
 
     /**
@@ -3169,8 +3198,10 @@ class App_KernelDevDebugContainer extends Container
             'kernel.container_class' => 'App_KernelDevDebugContainer',
             'container.dumper.inline_class_loader' => true,
             'container.dumper.inline_factories' => true,
-            'video_directory' => '../public/ffmpeg/video',
-            'image_directory' => '../public/ffmpeg/image',
+            'local_video_directory' => '../public/ffmpeg/video',
+            'local_image_directory' => '../public/ffmpeg/image',
+            'remote_video_directory' => 'adpods',
+            'remote_image_directory' => 'thumbnails',
             'fragment.renderer.hinclude.global_template' => '',
             'fragment.path' => '/_fragment',
             'kernel.http_method_override' => true,
@@ -3237,9 +3268,6 @@ class App_KernelDevDebugContainer extends Container
             'doctrine.dbal.connection_factory.types' => [
                 'uuid_binary_ordered_time' => [
                     'class' => 'Ramsey\\Uuid\\Doctrine\\UuidBinaryOrderedTimeType',
-                ],
-                'uuid' => [
-                    'class' => 'Ramsey\\Uuid\\Doctrine\\UuidType',
                 ],
             ],
             'doctrine.connections' => [
